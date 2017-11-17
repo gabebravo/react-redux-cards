@@ -96,7 +96,7 @@ class MemberForm extends Component {
                 <Input onChange={this.updateFormValues} value={this.state.description} 
                   type="textarea" name="description" />
               </FormGroup>
-              <Button onClick={this.submitHandler}>Submit</Button>
+              <Button color="primary" onClick={this.submitHandler}>Submit</Button>
             </Form>
             <FeedbackModal  
               showModal={this.state.showModal}
