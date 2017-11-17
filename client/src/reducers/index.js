@@ -2,7 +2,12 @@ import { combineReducers } from 'redux';
 import * as actions from '../actions';
 import { fullDeckArr } from '../data/allCards';
 
-export const allCards = (state = fullDeckArr, action) => {
+const fullDeckObj = fullDeckArr.reduce( (obj, card) => {
+  obj[card.clash_id] = card;
+  return obj;
+}, {})
+
+export const allCards = (state = fullDeckObj, action) => {
   switch(action.type) {
     case actions.SET_ALLCARDS : 
       return action.deck;

@@ -7,7 +7,13 @@ import { Link } from 'react-router-dom'
 class HeaderModal extends Component {
 
   printDeckList = (deckIds, arr) => {
-    if(arr.length === 0 ) { return '' }
+    if(arr.length === 0 ) { return (
+      <ListGroupItem style={{ fontSize: '1.5rem' }}>
+        <Row>
+          <Col><span>No Saved Decks Found</span></Col>
+        </Row>
+      </ListGroupItem>
+    ) }
     return arr.map( (deck, index) => {
       return (
         <div key={deckIds[index]}>

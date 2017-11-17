@@ -24,6 +24,7 @@ class MemberForm extends Component {
     showModal: false, 
     modalTitle: '',
     modalBody: '',
+    initModalDisplayed: false,
   }
 
   toggleModal = () => {
@@ -60,12 +61,17 @@ class MemberForm extends Component {
           modalBody: 'Please give your deck a description.',
         });
       } else {
+        if( !this.state.initModalDisplayed ) {
+          this.setState({ 
+            modalTitle: 'Success',
+            modalBody: 'Your deck has been saved. You can view it in the View Decks link in the header.',
+            showModal: true,
+            initModalDisplayed: true
+          });
+        }
         this.setState({ 
           title: '', 
           description: '',
-          modalTitle: 'Success',
-          modalBody: 'Your deck has been saved. You can view it in the View Decks link in the header.',
-          showModal: true
         });
         const id = uuidv1();
         const newUserDeck = buildUserDeck(this.props.activeDeck.cards, title, description);

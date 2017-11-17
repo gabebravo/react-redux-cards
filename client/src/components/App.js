@@ -4,12 +4,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 // important components
 import Homepage from '../containers/DeckTool';
 import Deck from '../containers/Deck';
-
-const NoMatch = ({ location }) => (
-  <div>
-    <h3>No match for <code>{location.pathname}</code></h3>
-  </div>
-)
+import NotFound from '../components/NotFound'
 
 class App extends Component {
   render() {
@@ -18,7 +13,7 @@ class App extends Component {
         <Switch>
           <Route exact path='/' component={Homepage} />
           <Route path='/deck/:id' component={Deck} />
-          <Route component={NoMatch}/>
+          <Route component={NotFound}/>
         </Switch>
       </Router>
     );

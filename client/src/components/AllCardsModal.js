@@ -19,30 +19,23 @@ class AllCardsModal extends Component {
   }
 
   addInitialModalSelectionToActiveDeck = (selectedCardId, fullDeck, activeDeck, adSelectedCardIndex) => {
-    const fullDeckCopy = [...fullDeck], activeDeckCopy = [...activeDeck];
-    const cardPickedFromModal = fullDeckCopy.find( card => card.clash_id === selectedCardId);
-    const cardIndex = fullDeckCopy.indexOf(cardPickedFromModal);
-
-    fullDeckCopy.splice(cardIndex, 1); // remove
-    const copyCardPickedFromModal = Object.assign({}, cardPickedFromModal)
-    copyCardPickedFromModal.level = 1, copyCardPickedFromModal.isCardSet = true; // make the default level 1
-    activeDeckCopy.splice(adSelectedCardIndex, 1, copyCardPickedFromModal); // add
-    this.props.setAllCards(fullDeckCopy);
+    const fullDeckCopy = {...fullDeck}, activeDeckCopy = [...activeDeck];
+    const modifiedModalCard = Object.assign({}, fullDeckCopy[selectedCardId], { level: 1});
+    activeDeckCopy[adSelectedCardIndex] = modifiedModalCard;
+    const updatedFullDeck = _.omit(fullDeckCopy, [selectedCardId]);
+    this.props.setAllCards(updatedFullDeck);
     this.props.setActiveDeck(activeDeckCopy);
   }
 
-  swapActiveCardForModalSelectionCard = (selectedCardId, fullDeck, activeDeck, selectedIndex) => {
-    const fullDeckCopy = [...fullDeck], activeDeckCopy = [...activeDeck];
-    const cardPickedFromModal = fullDeckCopy.find( card => card.clash_id === selectedCardId);
-    const modifiedModalCard = Object.assign({}, cardPickedFromModal, { level: 1});
-
-    const [adSwappedCard] = activeDeckCopy.splice(selectedIndex, 1, modifiedModalCard); // remove
-    const modifiedAdCard = Object.assign({}, adSwappedCard, { level: 1});
-    const filteredDeck = fullDeckCopy.filter( card => card.clash_id !== selectedCardId) // full deck
-    filteredDeck.push(modifiedAdCard); // push in the new card
-
+  swapActiveCardForModalSelectionCard = (selectedCardId, fullDeck, activeDeck, adSelectedCardIndex) => {
+    const fullDeckCopy = Object.assign({}, {}, fullDeck), activeDeckCopy = [...activeDeck];
+    // pass the card from the active deck back into the fulldeck >> must happen first
+    fullDeckCopy[ activeDeckCopy[adSelectedCardIndex].clash_id ] = activeDeckCopy[adSelectedCardIndex];
+    const modifiedModalCard = Object.assign({}, fullDeckCopy[selectedCardId], { level: 1});
+    activeDeckCopy[adSelectedCardIndex] = modifiedModalCard; // reassign card into the active deck >> must happen after
+    const updatedFullDeck = _.omit(fullDeckCopy, [selectedCardId]);
+    this.props.setAllCards(updatedFullDeck);
     this.props.setActiveDeck(activeDeckCopy);
-    this.props.setAllCards(filteredDeck);
   }
 
   updateDeck = cardId => {
