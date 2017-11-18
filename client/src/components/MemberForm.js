@@ -1,20 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { setUserDeck } from '../actions';
-import { Redirect } from 'react-router-dom';
 import FeedbackModal from '../components/FeedbackModal';
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import { Container, Row, Col } from 'reactstrap';
 import { buildUserDeck } from '../utils'
 const uuidv1 = require('uuid/v1');
-
-const styles = {
-  legendStyles: {
-    fontSize: '1rem', 
-    color: '#107896', 
-    fontWeight: '700'
-  }
-}
 
 class MemberForm extends Component {
 

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import * as actions from '../actions';
 import { ActiveDeck } from '../components/ActiveDeck';
 
-import { Container, Row, Col } from 'reactstrap';
+import { Container } from 'reactstrap';
 import Header from '../components/Header';
 import AllCardsModal from '../components/AllCardsModal';
 import MemberForm from '../components/MemberForm';

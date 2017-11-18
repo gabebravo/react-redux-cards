@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { ActiveDeck } from '../components/ActiveDeck';
 
-import { Container, Row, Col } from 'reactstrap';
+import { Container } from 'reactstrap';
 import Header from '../components/Header';
 import HistoryChart from '../components/HistoryChart';
 import DpsChart from '../components/DpsChart';

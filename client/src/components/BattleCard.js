@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { toggleAllCardsModal, setAdSelectedindex, setActiveDeck } from '../actions';
-import { Card, CardImg, CardBlock, CardTitle, Button, 
-  ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
+import { Card, CardImg, CardBlock, CardTitle, ButtonDropdown, 
+  DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 
 class BattleCard extends Component {
 

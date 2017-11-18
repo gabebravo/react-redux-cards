@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { deleteUserDeck } from '../actions'
-import { Button, ListGroup, ListGroupItem, Modal, ModalHeader, ModalBody, Container, Row, Col } from 'reactstrap';
+import { Button, ListGroup, ListGroupItem, Modal, ModalHeader, 
+  ModalBody, Row, Col } from 'reactstrap';
 import { Link } from 'react-router-dom'
 
 class HeaderModal extends Component {
