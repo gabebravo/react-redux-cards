@@ -21,7 +21,7 @@ class HeaderModal extends Component {
             <Row>
               <Col xs="5" md="6"><span>{deck.title}</span></Col>
               <Link className="open-search" to={`/deck/${deckIds[index]}`}>
-              <Col xs="2" md="1"><Button color="primary">View</Button></Col></Link>
+              <Col xs="2" md="1"><Button onClick={() => this.props.toggleModal()} color="primary">View</Button></Col></Link>
               <Col xs="2" md="1"><Button onClick={() => this.props.deleteUserDeck(deckIds[index])} color="primary">Delete</Button></Col>
             </Row>
           </ListGroupItem>
