@@ -6,17 +6,18 @@ import { Container } from 'reactstrap';
 import Header from '../components/Header';
 import HistoryChart from '../components/HistoryChart';
 import DpsChart from '../components/DpsChart';
-import NotFound from '../components/NotFound'
+import { Redirect } from 'react-router-dom';
 
 class Deck extends Component {
 
   render() {
     const { userDecks } = this.props;
     const { id } = this.props.match.params;
-    const activeDeck = Object.keys(userDecks).length > 0 ? userDecks[id].cards: [];
+    const activeDeck = Object.keys(userDecks).length > 0 && 
+      userDecks[id].cards ? userDecks[id].cards: [];
     return (
     <div> {
-      Object.keys(userDecks).length === 0 ? ( <div><NotFound /></div> ) : (
+      Object.keys(userDecks).length === 0 ? ( <div><Redirect to="/"/></div> ) : (
       <div>
         <Header />
         <ActiveDeck adArray={activeDeck} dropDown={false}/>
